@@ -1012,6 +1012,15 @@ async function openMyPredictionsModal() {
   summaryEl.innerHTML = `Sonuçlanan <strong>${scoredMatches}</strong> maçtan toplam <strong>${totalPts} PT</strong> kazandın`;
   listEl.innerHTML = html;
 }
+document.getElementById("my-pred-toggle-btn").addEventListener("click", openMyPredictionsModal);
+
+document.getElementById("close-predictions-modal").addEventListener("click", () => {
+  document.getElementById("my-predictions-modal").classList.remove("active");
+});
+
+document.getElementById("my-predictions-modal").addEventListener("click", (e) => {
+  if (e.target.id === "my-predictions-modal") e.currentTarget.classList.remove("active");
+});
 async function loadAndInit() {
   try {
     const snap = await get(ref(db, FBP()));
